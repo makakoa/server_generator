@@ -1,3 +1,5 @@
+/* Authors: Cameron Yee, Charles Renwick, Gabe Medrash */
+
 /*jshint node: true*/
 var prompt = require('prompt');
 var exec = require('child_process').exec;
@@ -41,4 +43,5 @@ prompt.get(schema, function(err, res) {
                 '\tconsole.log(\'server running at \' + port);\n' +
                 '});');
     }
+    //exec('cd ' + res.dir + ' | npm install'); //needs package.json write stream
 });
