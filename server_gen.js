@@ -22,7 +22,7 @@ var schema = {
         }
     }
 };
-   
+
 prompt.start();
 
 prompt.get(schema, function(err, res) {
@@ -40,5 +40,6 @@ prompt.get(schema, function(err, res) {
                 'app.listen(port, function() {\n' +
                 '\tconsole.log(\'server running at \' + port);\n' +
                 '});');
+    exec('npm install');
     }
 });
