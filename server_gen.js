@@ -32,7 +32,8 @@ prompt.start();
 prompt.get(schema, function(err, res) {
     if(err) {
         console.log(err);
-
+    }
+    res.dir = '../' + res.dir;
     exec('mkdir ' + res.dir, function(error, stdout, stderr) {
         if (error) console.log(error);
         if (stderr) console.log(stderr);
@@ -49,5 +50,4 @@ prompt.get(schema, function(err, res) {
                     '});');
         }
     });
-
 });
