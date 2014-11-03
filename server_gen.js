@@ -22,7 +22,7 @@ var schema = {
         }
     }
 };
-   
+
 prompt.start();
 
 prompt.get(schema, function(err, res) {
