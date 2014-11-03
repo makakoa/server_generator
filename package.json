@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/GabeMedrash/server_generator.git"
+    "url": ""
   },
   "author": "Cameron, Charles, Gabe",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/GabeMedrash/server_generator/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/GabeMedrash/server_generator",
+  "homepage": "",
   "dependencies": {
     "prompt": "^0.2.14"
   }
