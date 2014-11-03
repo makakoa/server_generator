@@ -1,6 +1,8 @@
 /* Authors: Cameron Yee, Charles Renwick, Gabe Medrash */
 
 /*jshint node: true*/
+'use strict';
+
 var prompt = require('prompt');
 var exec = require('child_process').exec;
 var fs = require('fs');
@@ -24,24 +26,28 @@ var schema = {
         }
     }
 };
-   
+
 prompt.start();
 
 prompt.get(schema, function(err, res) {
     if(err) {
         console.log(err);
     }
-    if ( res.dir ) exec('mkdir ' + res.dir);
-    var ws = fs.createWriteStream(res.dir + '/' + res.name);
-    ws.write('/*jshint node: true*/\n');
-    ws.write('\'use strict\'\n\n');
-    if(res.isExpress === 'y') {
-        ws.write('var express = require(\'express\');\n' +
-                'var app = express();\n\n' +
-                'var port = process.env.PORT || 3000;\n' +
-                'app.listen(port, function() {\n' +
-                '\tconsole.log(\'server running at \' + port);\n' +
-                '});');
-    }
-    //exec('cd ' + res.dir + ' | npm install'); //needs package.json write stream
+    res.dir = '../' + res.dir;
+    exec('mkdir ' + res.dir, function(error, stdout, stderr) {
+        if (error) console.log(error);
+        if (stderr) console.log(stderr);
+
+        var ws = fs.createWriteStream(res.dir + '/' + res.name);
+        ws.write('/*jshint node: true*/\n');
+        ws.write('\'use strict\'\n\n');
+        if(res.isExpress === 'y') {
+            ws.write('var express = require(\'express\');\n' +
+                    'var app = express();\n\n' +
+                    'var port = process.env.PORT || 3000;\n' +
+                    'app.listen(port, function() {\n' +
+                    '\tconsole.log(\'server running at \' + port);\n' +
+                    '});');
+        }
+    });
 });
