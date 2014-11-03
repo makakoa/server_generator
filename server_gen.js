@@ -1,4 +1,6 @@
 /*jshint node: true*/
+'use strict';
+
 var prompt = require('prompt');
 var exec = require('child_process').exec;
 var fs = require('fs');
