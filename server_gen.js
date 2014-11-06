@@ -30,24 +30,24 @@ var schema = {
 prompt.start();
 
 prompt.get(schema, function(err, res) {
-    if(err) {
-        console.log(err);
+  if (err) {
+    console.log(err);
 
     exec('mkdir ' + res.dir, function(error, stdout, stderr) {
-        if (error) console.log(error);
-        if (stderr) console.log(stderr);
+      if (error) console.log(error);
+      if (stderr) console.log(stderr);
 
-        var ws = fs.createWriteStream(res.dir + '/' + res.name);
-        ws.write('/*jshint node: true*/\n');
-        ws.write('\'use strict\'\n\n');
-        if(res.isExpress === 'y') {
-            ws.write('var express = require(\'express\');\n' +
+      var ws = fs.createWriteStream(res.dir + '/' + res.name);
+      ws.write('/*jshint node: true*/\n');
+      ws.write('\'use strict\'\n\n');
+      if (res.isExpress === 'y') {
+        ws.write('var express = require(\'express\');\n' +
                     'var app = express();\n\n' +
                     'var port = process.env.PORT || 3000;\n' +
                     'app.listen(port, function() {\n' +
                     '\tconsole.log(\'server running at \' + port);\n' +
                     '});');
-        }
+      }
     });
-
+  }
 });
